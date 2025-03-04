@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Little Honda",
+        "artist": "The Beach Boys",
+        "year": 1966,
+        "genres": ["Rock", "Pop"]
+    },
+    {
+        "title": "Wouldn't It Be Nice",
+        "artist": "The Beach Boys",
+        "year": 1966,
+        "genres": ["Pop", "Rock"]
+    },
+    {
+        "title": "Good Vibrations",
+        "artist": "The Beach Boys",
+        "year": 1966,
+        "genres": ["Rock"]
+    },
+    {
+        "title": "Kids",
+        "artist": "MGMT",
+        "year": 2007,
+        "genres": ["Indie Rock", "Electronic"]
+    },
+    {
+        "title": "Electric Feel",
+        "artist": "MGMT",
+        "year": 2007,
+        "genres": ["Indie Rock", "Psychedelic"]
+    },
+    {
+        "title": "Time to Pretend",
+        "artist": "MGMT",
+        "year": 2007,
+        "genres": ["Indie Rock", "Electronic"]
+    },
+    {
+        "title": "Desfado",
+        "artist": "Ana Moura",
+        "year": 2012,
+        "genres": ["Fado"]
+    },
+    {
+        "title": "Surfin' U.S.A.",
+        "artist": "The Beach Boys",
+        "year": 1963,
+        "genres": ["Rock", "Surf Rock"]
+    }
+]

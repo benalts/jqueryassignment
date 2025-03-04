@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 3</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <label>Select your genre:</label>
+    <select id="select-genre">
+        <option value="">Select</option>
+    </select>
+
+    <button id="filter-button">Filter</button>
+
+    <h1>Songs From this Genre</h1>
+    <div id="song-list"></div>
+
+    <script>
+        let genres = new Set();
+
+        $.get("songs.json", function(data) {
+            let songs = data;
+
+            //extract each genre and add to our set for unique
+            songs.forEach(song => {
+                song.genres.forEach(genre => {
+                    genres.add(genre);
+                })
+                
+            });
+            
+            genres.forEach(genre => {
+                $("#select-genre").append(`<option value="${genre}">${genre}</option>`);
+            });
+
+            //add listener for dropdown
+
+            $("#select-genre").change(function() {
+                let currentGenre = $(this).val();
+                let currentGenreSongs = songs.filter(song => song.genres.includes(currentGenre));
+                
+                let songOutput = "";
+                currentGenreSongs.forEach(song => {
+
+                    let genreText = "Genre: ";
+
+                    //loop through genres if the song has more than one
+                    song.genres.forEach((genre, index) => {
+                        genreText += genre;
+                        if (index < song.genres.length - 1) {
+                            genreText += ", ";
+                        }
+                    });
+
+                    //now that we have the genres, we can populate html output
+
+                    songOutput += `
+                        <p><strong>${song.title} </strong><br>
+                        Artist: ${song.artist} <br>
+                        Genre: ${genreText} <br>
+                        Released: ${song.year}</p>
+                        <hr>`;
+                });
+
+                $("#song-list").html(songOutput);
+            });
+
+            //FILTER BUTTON
+            
+            //grab button by id and add onclick
+            $('#filter-button').click(function() {
+                let currentGenre = $("#select-genre").val();
+                let currentGenreSongs = songs.filter(song => song.genres.includes(currentGenre));
+
+                let songOutput = "";
+                currentGenreSongs.forEach(song => {
+                    songOutput += `<p><strong>${song.title}</strong></p>`;
+                });
+
+                $("#song-list").html(songOutput);
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

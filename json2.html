@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Songs</h1>
+    <div id="song-json"></div>
+
+    <script>
+        
+            $.get("songs.json", function(data) {
+                let songs = data;
+
+                //filling up html to display in div
+                let songOutput = "";
+                songs.forEach(song => {
+
+                    let genreText = "Genre: ";
+
+                    //loop through genres if the song has more than one
+                    song.genres.forEach((genre, index) => {
+                        genreText += genre;
+                        if (index < song.genres.length - 1) {
+                            genreText += ", ";
+                        }
+                    });
+                    
+                    //final output of songs
+                    songOutput += `
+                        <p><strong>${song.title} </strong><br>
+                        Artist: ${song.artist} <br>
+                        Genre: ${genreText} <br>
+                        Released: ${song.year}</p>
+                        <hr>`;
+                });
+
+                document.getElementById("song-json").innerHTML = songOutput;
+                
+            });
+
+       
+        
+
+        
+    </script>
+    
+</body>
+</html>
